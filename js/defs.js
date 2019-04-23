@@ -109,6 +109,11 @@ var PieceRookQueen = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE
 var PieceBishopQueen = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE ];
 var PieceSlides = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE ];
 
+var KnDir = [-8, -19, -21, -12, 8, 19, 21, 12]
+var RkDir = [-1, -10, 1, 10]
+var BiDir = [-9, -11, 11, 9]
+var KiDir = [-1, -10, 1, 10, -9, -11, 11, 9]
+
 var PieceKeys = new Array(14 * 120)
 var SideKey;
 var CastleKeys = new Array(16)// 15 1111
