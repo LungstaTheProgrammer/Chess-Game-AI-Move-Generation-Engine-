@@ -221,5 +221,4 @@ function ParseFen(fen) {
     GameBoard.posKey = GeneratePosKey()
 
     //check if fen string is correct or throw exception
-
 }
