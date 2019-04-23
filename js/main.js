@@ -2,10 +2,13 @@ $(() => {
     init()
     console.log("Main init called")
 
-    var piece1 = RAND_32()
-    var piece2 = RAND_32()
-    var piece3 = RAND_32()
-    var piece4 = RAND_32()
+    ParseFen(START_FEN)
+    PrintBoard()
+    
+    // var piece1 = RAND_32()
+    // var piece2 = RAND_32()
+    // var piece3 = RAND_32()
+    // var piece4 = RAND_32()
 
     // var key = 0
     // key ^= piece1

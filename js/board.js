@@ -35,6 +35,41 @@ GameBoard.moveList = new Array(MAXDEPTH * MAXPOSITIONMOVES)
 GameBoard.moveScores = new Array(MAXDEPTH * MAXPOSITIONMOVES)
 GameBoard.moveListStart = new Array(MAXDEPTH)
 
+function PrintBoard() {
+    var sq, file, rank, piece
+
+    console.log("\nGame Board")
+
+    for (rank = RANKS.RANK_8; rank >= RANKS.RANK_1; rank--) {
+        var line = (RankChar[rank] + " ")
+        for (file = FILES.FILE_A; file <= FILES.FILE_H; file++) {
+            sq = FR2SQ(file, rank)
+            piece = GameBoard.pieces[sq]
+            line += (" " + PceChar[piece] + " ")
+        }
+        console.log(line)
+    }
+
+    console.log("")
+    var line = "  "
+    for (file = FILES.FILE_A; file <= FILES.FILE_H; file++) {
+        line += (" " + FileChar[file] + " ")
+    }
+    console.log(line)
+
+    console.log("side:" + SideChar[GameBoard.side])
+    console.log("enPas:" + GameBoard.enPas)
+    line = ""
+
+    if (GameBoard.castlePerm & CASTLEBIT.WKCA) line += "K"
+    if (GameBoard.castlePerm & CASTLEBIT.WQCA) line += "Q"
+    if (GameBoard.castlePerm & CASTLEBIT.BKCA) line += "k"
+    if (GameBoard.castlePerm & CASTLEBIT.BQCA) line += "q"
+
+    console.log("castle:" + line)
+    console.log("key:" + GameBoard.posKey.toString(16))
+}
+
 function GeneratePosKey() {
     var sq = 0
     var finalKey = 0
@@ -43,7 +78,7 @@ function GeneratePosKey() {
     for (sq = 0; sq < BRD_SQ_NUM; ++sq) {
         piece = GameBoard.pieces[sq]
         if (piece != PIECES.EMPTY && piece != SQUARES.OFFBOARD) {
-            finalKey ^= Piece[(piece * 120) + sq]
+            finalKey ^= PieceKeys[(piece * 120) + sq]
         }
     }
 
@@ -69,10 +104,10 @@ function ResetBoard() {
     }
 
     for (index = 0; index < 64; ++index) {
-        GameBoard.pieces[Sq120(index)] = PIECES.EMPTY
+        GameBoard.pieces[SQ120(index)] = PIECES.EMPTY
     }
 
-    for (index = 0; inde < 14; ++index) {
+    for (index = 0; index < 14; ++index) {
         GameBoard.pList[index] = PIECES.EMPTY
     }
 
@@ -140,7 +175,7 @@ function ParseFen(fen) {
                 rank--;
                 file = FILES.FILE_A;
                 fenCnt++;
-                contine;
+                continue;
 
             default:
                 console.log("FEN error \n");
