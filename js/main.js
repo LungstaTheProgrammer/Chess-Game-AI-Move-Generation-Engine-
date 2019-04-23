@@ -7,19 +7,19 @@ $(() => {
     var piece3 = RAND_32()
     var piece4 = RAND_32()
 
-    var key = 0
-    key ^= piece1
-    key ^= piece2
-    key ^= piece3
-    key ^= piece4
-    console.log("key:", key.toString(16))
-    key ^= piece1
-    console.log("Piece 1 out key:", key.toString(16))
-    key = 0
-    key ^= piece2
-    key ^= piece3
-    key ^= piece4
-    console.log("build on piece1:", key.toString(16))
+    // var key = 0
+    // key ^= piece1
+    // key ^= piece2
+    // key ^= piece3
+    // key ^= piece4
+    // console.log("key:", key.toString(16))
+    // key ^= piece1
+    // console.log("Piece 1 out key:", key.toString(16))
+    // key = 0
+    // key ^= piece2
+    // key ^= piece3
+    // key ^= piece4
+    // console.log("build on piece1:", key.toString(16))
 
 })
 
@@ -46,6 +46,20 @@ function InitFilesRankBrd() {
     console.log("FilesBrd[SQUARES.A1]:", FilesBrd[SQUARES.A1],"RanksBrd[SQUARES.A1]:", RanksBrd[SQUARES.A1])
     console.log("FilesBrd[SQUARES.E8]:", FilesBrd[SQUARES.E8],"RanksBrd[SQUARES.E8]:", RanksBrd[SQUARES.E8])
 
+}
+
+function InitHashKeys() {
+    var index = 0
+
+    for (index = 0; index < 14*120; ++index) {
+        PieceKeys[index] = RAND_32()
+    }
+
+    SideKey = RAND_32()
+
+    for (index = 0; index < 16; index) {
+        CastleKeys[index] = RAND_32()
+    }
 }
 
 function init() {
