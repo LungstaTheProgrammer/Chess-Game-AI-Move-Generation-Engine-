@@ -137,3 +137,17 @@ function SQ120(sq64) {
 function PCEINDEX(pce , pcenum) {
     return (pce * 10 + pcenum)
 }
+
+function FROMSQ(m) { return (m & 0x7F)}
+function TOSQ(m) { return ((m >> 7) & 0x7F)}
+function CAPTURED(m) { return ((m >> 14) & 0xF)}
+function PROMOTED(m) { return ((m >> 20) & 0xF)}
+
+var MFLAGEP = 0x40000
+var MFLAGPS = 0x80000
+var MFLAGCA = 0x1000000
+
+var MFLAGCAP = 0x7C000
+var MFLAGPROM = 0xF00000
+
+var NOMOVE = 0
