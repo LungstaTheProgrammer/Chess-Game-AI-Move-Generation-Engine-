@@ -1,6 +1,26 @@
 $(() => {
     init()
     console.log("Main init called")
+
+    var piece1 = RAND_32()
+    var piece2 = RAND_32()
+    var piece3 = RAND_32()
+    var piece4 = RAND_32()
+
+    var key = 0
+    key ^= piece1
+    key ^= piece2
+    key ^= piece3
+    key ^= piece4
+    console.log("key:", key.toString(16))
+    key ^= piece1
+    console.log("Piece 1 out key:", key.toString(16))
+    key = 0
+    key ^= piece2
+    key ^= piece3
+    key ^= piece4
+    console.log("build on piece1:", key.toString(16))
+
 })
 
 function InitFilesRankBrd() {

@@ -10,6 +10,7 @@ GameBoard.side = COLOURS.WHITE
 GameBoard.fiftyMove = 0
 GameBoard.hisPly = 0
 GameBoard.ply = 0
+GameBoard.enPas = 0
 /*
 0001
 0010
