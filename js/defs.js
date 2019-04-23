@@ -46,6 +46,13 @@ var COLOURS = {
     BOTH: 2
 }
 
+var CASTLEBIT = {
+    WKCA : 1,
+    WQCA : 2,
+    BKCA : 4,
+    KQCA : 8
+}
+
 var SQUARES = {
     A1: 21,
     B1: 22,
