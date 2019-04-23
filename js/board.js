@@ -95,6 +95,46 @@ function GeneratePosKey() {
     return finalKey
 }
 
+function PrintPieceLists() {
+    var piece, pceNum
+
+    for (piece = PIECES.wP; piece <= PIECES.bK; ++piece) {
+        for (pceNum = 0; pceNum < GameBoard.pceNum[piece]; ++pceNum) {
+            console.log('Piece ' + PceChar[piece] + ' on ' + PrSq(GameBoard.pList[PCEINDEX(piece, pceNum)]))
+        }
+    }
+}
+
+function UpdateListsMaterial() {
+    var piece, sq, index, colour
+
+    for (index = 0; index < 14 * 120; ++index) {
+        GameBoard.pList[index] = PIECES.EMPTY
+    }
+
+    for (index = 0; index < 2; ++index) {
+        GameBoard.material[index] = 0
+    }
+
+    for (index = 0; index < 13; ++index) {
+        GameBoard.pceNum[index] = 0
+    }
+
+    for (index = 0; index < 64; ++index) {
+        sq = SQ120(index)
+        piece = GameBoard.pieces[sq]
+        if (piece != PIECES.EMPTY) {
+            // console.log("piece " + piece + " on " + sq)
+            colour = PieceCol[piece] 
+            GameBoard.material[colour] += PieceVal[piece]
+
+            GameBoard.pList[PCEINDEX(piece, GameBoard.pceNum[piece])] = sq
+            GameBoard.pceNum[piece]++
+        }
+    }
+    PrintPieceLists()
+}
+
 function ResetBoard() {
 
     var index = 0
@@ -105,18 +145,6 @@ function ResetBoard() {
 
     for (index = 0; index < 64; ++index) {
         GameBoard.pieces[SQ120(index)] = PIECES.EMPTY
-    }
-
-    for (index = 0; index < 14; ++index) {
-        GameBoard.pList[index] = PIECES.EMPTY
-    }
-
-    for (index = 0; index < 2; ++index) {
-        GameBoard.material[index] = 0
-    }
-
-    for (index = 0; index < 13; ++index) {
-        GameBoard.pceNum[index] = 0
     }
 
     GameBoard.side = COLOURS.BOTH
@@ -147,7 +175,7 @@ function ParseFen(fen) {
         switch (fen[fenCnt]) {
             case "p" : piece = PIECES.bP; break;
             case "r" : piece = PIECES.bR; break;
-            case "n" : piece = PIECES.bK; break;
+            case "n" : piece = PIECES.bN; break;
             case "b" : piece = PIECES.bB; break;
             case "k" : piece = PIECES.bK; break;
             case "q" : piece = PIECES.bQ; break;
@@ -219,6 +247,6 @@ function ParseFen(fen) {
     }
 
     GameBoard.posKey = GeneratePosKey()
-
+    UpdateListsMaterial()
     //check if fen string is correct or throw exception
 }

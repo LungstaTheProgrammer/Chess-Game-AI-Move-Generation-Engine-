@@ -44,7 +44,7 @@ function InitFilesRankBrd() {
             RanksBrd[sq] = rank
         }
     }
-    console.log("filerankinit done")
+    // console.log("filerankinit done")
 }
 
 function InitHashKeys() {
@@ -59,7 +59,7 @@ function InitHashKeys() {
     for (index = 0; index < 16; ++index) {
         CastleKeys[index] = RAND_32()
     }
-    console.log("hashkeys done")
+    // console.log("hashkeys done")
 }
 
 function InitSq120To64() {
@@ -85,7 +85,7 @@ function InitSq120To64() {
             sq64++
         }
     }
-    console.log("sq120to64 done")
+    // console.log("sq120to64 done")
 }
 
 function init() {
