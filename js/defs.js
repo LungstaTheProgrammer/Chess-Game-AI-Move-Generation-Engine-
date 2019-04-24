@@ -146,6 +146,23 @@ function PCEINDEX(pce , pcenum) {
     return (pce * 10 + pcenum)
 }
 
+var Kings = [PIECES.wK, PIECES.bK]
+
+var CastlePerm = [
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    15, 13, 15, 15, 15, 12, 15, 15, 14, 15,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    15,  7, 15, 15, 15,  3, 15, 15, 11, 15,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15
+];
+
 function FROMSQ(m) { return (m & 0x7F)}
 function TOSQ(m) { return ((m >> 7) & 0x7F)}
 function CAPTURED(m) { return ((m >> 14) & 0xF)}
@@ -164,3 +181,11 @@ function SQOFFBOARD(sq) {
     if (FilesBrd[sq] == SQUARES.OFFBOARD) return BOOL.TRUE;
     else return BOOL.FALSE;
 }
+
+function HASH_PCE(pce, sq) {
+    GameBoard.posKey ^= PieceKeys[(pce * 120) + sq]
+}
+
+function HASH_CA() { GameBoard.posKey ^= CastleKeys[GameBoard.castlePerm] }
+function HASH_SIDE() { GameBoard.posKey ^= SideKey }
+function HASH_EP() { GameBoard.posKey ^= CastleKeys[GameBoard.enPas] }

@@ -6,6 +6,12 @@ $(() => {
     PrintBoard()
     GenerateMoves()
     PrintMoveList()
+    PrintPieceLists()
+    CheckBoard()
+    MakeMove(GameBoard.moveList[0])
+    PrintBoard()
+    CheckBoard()
+
     
     // var piece1 = RAND_32()
     // var piece2 = RAND_32()
@@ -90,9 +96,23 @@ function InitSq120To64() {
     // console.log("sq120to64 done")
 }
 
+function InitBoardVars() {
+    var index = 0
+    for (index = 0; index < MAXGAMEMOVES; ++index) {
+        GameBoard.history.push({
+            move : NOMOVE,
+            castlePerm : 0,
+            enPas : 0,
+            fiftyMove : 0,
+            posKey : 0
+        })
+    }
+}
+
 function init() {
     console.log("init() called")
     InitFilesRankBrd()
     InitHashKeys()
     InitSq120To64()
+    InitBoardVars()
 }
