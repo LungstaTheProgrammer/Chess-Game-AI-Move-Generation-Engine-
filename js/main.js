@@ -4,6 +4,8 @@ $(() => {
 
     ParseFen(START_FEN)
     PrintBoard()
+    GenerateMoves()
+    PrintMoveList()
     
     // var piece1 = RAND_32()
     // var piece2 = RAND_32()
