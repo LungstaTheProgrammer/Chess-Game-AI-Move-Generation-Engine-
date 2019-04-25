@@ -311,7 +311,7 @@ function PrintSqAttacked() {
         var line = ((rank + 1) + "  ")
         for (file = FILES.FILE_A; file <= FILES.FILE_H; file++) {
             sq = FR2SQ(file, rank)
-            if (SqAttacked(sq, GameBoard.side) == BOOL.TRUE) piece = "X";
+            if (SqAttacked(sq, GameBoard.side ^ 1) == BOOL.TRUE) piece = "X";
             else piece = "-";
             line += (" " + piece + " ")
         }

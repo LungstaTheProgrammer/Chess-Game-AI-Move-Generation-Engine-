@@ -11,7 +11,7 @@ function ClearPiece(sq) {
     GameBoard.material[col] -= PieceVal[pce]
 
     for (index = 0; index < GameBoard.pceNum[pce]; ++index) {
-        if (GameBoard.pList[PCEINDEX(pce, indec)] == sq) {
+        if (GameBoard.pList[PCEINDEX(pce, index)] == sq) {
             t_pceNum = index
             break
         }
@@ -72,16 +72,16 @@ function MakeMove(move) {
         switch(to) {
             case SQUARES.C1:
                 MovePiece(SQUARES.A1, SQUARES.D1);
-                break;
+            break;
             case SQUARES.C8:
                 MovePiece(SQUARES.A8, SQUARES.D8);
-                break;
+            break;
             case SQUARES.G1:
                 MovePiece(SQUARES.H1, SQUARES.F1);
-                break;
+            break;
             case SQUARES.G8:
                 MovePiece(SQUARES.H8, SQUARES.F8);
-                break;
+            break;
             default: break;
         }
     }
@@ -193,6 +193,6 @@ function TakeMove() {
         AddPiece(from, (PieceCol[PROMOTED(move)]  == COLOURS.WHITE ? PIECES.wP : PIECES.bP))
     }
 
-    
+
 
 }
