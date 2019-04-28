@@ -182,10 +182,10 @@ var CastlePerm = [
     15, 15, 15, 15, 15, 15, 15, 15, 15, 15
 ];
 
-function FROMSQ(m) { return (m & 0x7F)}
-function TOSQ(m) { return ((m >> 7) & 0x7F)}
-function CAPTURED(m) { return ((m >> 14) & 0xF)}
-function PROMOTED(m) { return ((m >> 20) & 0xF)}
+function FROMSQ(m) { return (m & 0x7F) } 
+function TOSQ(m) { return ((m >> 7) & 0x7F) }
+function CAPTURED(m) { return ((m >> 14) & 0xF) }
+function PROMOTED(m) { return ((m >> 20) & 0xF) }
 
 var MFLAGEP = 0x40000
 var MFLAGPS = 0x80000
@@ -208,3 +208,13 @@ function HASH_PCE(pce, sq) {
 function HASH_CA() { GameBoard.posKey ^= CastleKeys[GameBoard.castlePerm] }
 function HASH_SIDE() { GameBoard.posKey ^= SideKey }
 function HASH_EP() { GameBoard.posKey ^= CastleKeys[GameBoard.enPas] }
+
+var GameController = {}
+GameController.EngineSide = COLOURS.BOTH
+GameController.PlayerSide = COLOURS.BOTH
+GameController.GameOver = BOOL.FALSE
+
+var UserMove = {}
+UserMove.from = SQUARES.No_SQ
+UserMove.to = SQUARES.No_SQ
+

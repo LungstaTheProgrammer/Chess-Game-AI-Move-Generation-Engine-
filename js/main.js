@@ -1,9 +1,7 @@
 $(() => {
     init()
     console.log("Main init called")
-
-    ParseFen(START_FEN)
-    PrintBoard()
+    NewGame(START_FEN)
 
 })
 
@@ -89,6 +87,29 @@ function InitBoardVars() {
     }
 }
 
+function InitBoardSquares() {
+    var light = 1
+    var rankName;
+    var fileName;
+    var divString;
+    var rankIter;
+    var fileIter;
+    var lightString;
+
+    for (rankIter = RANKS.RANK_8; rankIter >= RANKS.RANK_1; rankIter--) {
+        light ^= 1
+        rankName = "rank" + (rankIter + 1)
+        for (fileIter = FILES.FILE_A; fileIter <= FILES.FILE_H; fileIter++) {
+            fileName = "file" + (fileIter + 1)
+            if (light == 0) lightString = "Light";
+            else lightString = "Dark"
+            light ^= 1
+            divString = '<div class="Square ' + rankName + ' ' + fileName + ' ' + lightString + ' "></div>' 
+            $('#Board').append(divString)
+        }
+    }
+}
+
 function init() {
     console.log("init() called")
     InitFilesRankBrd()
@@ -96,4 +117,5 @@ function init() {
     InitSq120To64()
     InitBoardVars()
     InitMvvLva()
+    InitBoardSquares()
 }

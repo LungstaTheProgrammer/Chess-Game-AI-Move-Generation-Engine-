@@ -90,23 +90,23 @@ function AddBlackPawnCaptureMove(from, to, cap) {
 
 function AddWhitePawnQuietMove(from, to) {
     if (RanksBrd[from] == RANKS.RANK_7) {
-        AddQuietMove(MOVE(from, to, PIECES.wQ, 0))
-        AddQuietMove(MOVE(from, to, PIECES.wR, 0))
-        AddQuietMove(MOVE(from, to, PIECES.wB, 0))
-        AddQuietMove(MOVE(from, to, PIECES.wN, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.wQ, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.wR, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.wB, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.wN, 0))
     } else {
-        AddQuietMove(MOVE(from, to, PIECES.EMPTY, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.EMPTY, 0))
     }
 }
 
 function AddBlackPawnQuietMove(from, to) {
     if (RanksBrd[from] == RANKS.RANK_2) {
-        AddQuietMove(MOVE(from, to, PIECES.bQ, 0))
-        AddQuietMove(MOVE(from, to, PIECES.bR, 0))
-        AddQuietMove(MOVE(from, to, PIECES.bB, 0))
-        AddQuietMove(MOVE(from, to, PIECES.bN, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.bQ, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.bR, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.bB, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.bN, 0))
     } else {
-        AddQuietMove(MOVE(from, to, PIECES.EMPTY, 0))
+        AddQuietMove(MOVE(from, to, PIECES.EMPTY, PIECES.EMPTY, 0))
     }
 }
 
